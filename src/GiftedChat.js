@@ -478,8 +478,8 @@ class GiftedChat extends React.Component {
   render() {
     if (this.state.isInitialized === true) {
       return (
-        <ActionSheet ref={(component) => (this._actionSheetRef = component)}>
-          <View style={styles.container} onLayout={this.onMainViewLayout}>
+        <ActionSheet ref={component => this._actionSheetRef = component}>
+          <View style={[styles.container, this.props.renderContainerStyle]} onLayout={this.onMainViewLayout}>
             {this.renderMessages()}
             {this.renderInputToolbar()}
           </View>
@@ -487,7 +487,7 @@ class GiftedChat extends React.Component {
       );
     }
     return (
-      <View style={styles.container} onLayout={this.onInitialLayoutViewLayout}>
+      <View style={[styles.container, this.props.renderContainerStyle]} onLayout={this.onInitialLayoutViewLayout}>
         {this.renderLoading()}
       </View>
     );
